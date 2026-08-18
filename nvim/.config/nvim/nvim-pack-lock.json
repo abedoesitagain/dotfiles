@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "fidget.nvim": {
+      "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
+      "src": "https://github.com/j-hui/fidget.nvim"
+    }
+  }
+}

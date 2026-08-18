@@ -1,0 +1,8 @@
+snippet qtbp qt 5 boilerplate
+    from PyQt5.uic import loadUi
+    from PyQt5.QtWidgets import QApplication
+    ${1}
+    app=QApplication([])
+    w=loadUi("Untitled.ui")
+    w.show()
+    app.exec_()

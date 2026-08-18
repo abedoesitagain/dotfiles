@@ -1,0 +1,44 @@
+-- lsp configuration
+
+vim.lsp.config('pylsp', {
+  cmd = {'pylsp'},
+  filetypes = {'python'},
+})
+vim.lsp.config('lua-ls', {
+  cmd = {'lua-language-server'},
+  filetypes = {'lua'},
+  root_markers = {'.luarc.json', '.luarc.jsonc'},
+})
+vim.lsp.config('ltex-ls', {
+    cmd = {'texlab'},
+    filetypes = {'tex'},
+})
+vim.lsp.config('bashlsp', {
+    cmd = {'bash-language-server'},
+    filetypes = {'bash'},
+})
+vim.lsp.config('clangd', {
+   cmd = {'clangd'},
+   filetypes = {'c', 'cpp'},
+})
+vim.lsp.config('zig', {
+    cmd = {'zls'},
+    filetypes = {'zig'},
+    version = {'0.15'},
+})
+vim.lsp.config('rust', {
+   cmd = {'rust-analyzer'},
+   filetypes = {'rust'},
+})
+vim.lsp.config('odin', {
+   cmd = {'ols'},
+   filetypes = {'odin'},
+})
+vim.lsp.config('typ', {
+   cmd = {'tinymist'},
+   filetypes = {'typst'},
+})
+vim.lsp.config('asm', {
+   cmd = {'asm-lsp'},
+   filetypes = {'asm'},
+})
