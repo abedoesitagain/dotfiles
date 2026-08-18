@@ -1,0 +1,80 @@
+set previewer ~/.config/lf/preview
+set icons false
+
+cmd open ${{ case $(file --mime-type "$f" -bL) in
+        text/*|application/json|inode/x-empty) $EDITOR "$f";;
+        application/x-executable) "$f";;
+        *) soap "$f" ;;
+        *) xdg-open "$f" ;;
+    esac }}
+
+cmd openand ${{ case $(file --mime-type "$f" -bL) in
+        text/*|application/json|inode/x-empty) $EDITOR "$f" &;;
+        application/x-executable) "$f" &;;
+        *) soap "$f" &;;
+        #*) xdg-open "$f" &;;
+    esac }}
+
+
+cmd mkdir %set -f; printf "Directory Name: "; read ans; mkdir $ans
+cmd touch %set -f; printf "New File Name: " ; read ans; touch $ans
+cmd trash %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 trash --
+cmd drag  %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 dragon --
+cmd media %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 mpv -- 
+cmd trash-restore ${{ trash-restore }}
+cmd newfilemd %read -p "file name: " totouch; touch "$totouch.md"
+cmd newfile %read -p "file name: " totouch; touch "$totouch"
+cmd newfiledate %touch "`date +%F`.md"
+cmd fzf ${{open $(fzf)}}
+
+map . set hidden!
+map d
+map x fag
+map dd trash
+map dD delete
+map dx cut
+map a  invert
+map u drag
+map U trash-restore
+map o media
+
+map ~ cd ~
+map gll cd ~/dl
+map glt cd ~/dl/torrents
+map glg cd ~/dl/games
+
+map gdd cd ~/docs
+map gdc cd ~/docs/prj/crtv
+map gdw cd ~/docs/study
+map gds cd ~/docs/study/textbooks
+map gdg cd ~/docs/prj/prg
+map gdb cd ~/docs/library
+map grd cd ~/docs/redoubt/dwl
+map gdj cd ~/docs/journal
+map gds cd ~/docs/site/
+
+map gme cd ~/media
+map gma cd ~/media/anime
+map gmv cd ~/media/movies
+map gmt cd ~/media/tv
+map gmm cd ~/media/music
+
+map gpc cd ~/pics
+map gss cd ~/pics/screenshots
+
+map g.c cd ~/.config 
+map g.s cd ~/.local/share
+map g.t cd ~/.local/state
+map g.b cd ~/.local/bin
+map g.h cd ~/.cache
+
+#map F fzf
+map bf touch
+map bd mkdir
+map O openand
+
+map F ${{
+    clear
+    togo="$(fzf)"
+    lf -remote "send $id select '$togo'" 
+}}
