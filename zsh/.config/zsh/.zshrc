@@ -58,3 +58,8 @@ bindkey -M vicmd v edit-command-line
 
 source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/site-functions/zsh-autosuggestions.zsh 2>/dev/null
+
+
+if [[ -z "$TMUX" ]]; then
+  exec tmux new-session zsh
+fi

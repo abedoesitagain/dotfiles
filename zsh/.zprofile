@@ -53,6 +53,8 @@ export QT_QPA_PLATFORMTHEME="qt6ct"
 # PATH variable
 export PATH="$HOME/.local/bin:$HOME/.local/share/python-venv/bin:/$HOME/.local/share/cargo/bin:$HOME/.local/share/go/bin:$HOME/.local/share/pnpm:/usr/local/texlive/2026/bin/x86_64-linux:$PNPM_HOME:$PATH"
 
+[[ -f ~/.local/share/Xresources/Xresources ]] && xrdb -merge -I$HOME ~/.local/share/Xresources/Xresources
+
 # autostart at tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
     startw
