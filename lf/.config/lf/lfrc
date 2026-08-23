@@ -44,10 +44,9 @@ map glt cd ~/dl/torrents
 map glg cd ~/dl/games
 
 map gdd cd ~/docs
-map gdc cd ~/docs/prj/crtv
 map gdw cd ~/docs/study
 map gds cd ~/docs/study/textbooks
-map gdg cd ~/docs/prj/prg
+map gdg cd ~/docs/projects
 map gdb cd ~/docs/library
 map grd cd ~/docs/redoubt/dwl
 map gdj cd ~/docs/journal
@@ -58,6 +57,7 @@ map gma cd ~/media/anime
 map gmv cd ~/media/movies
 map gmt cd ~/media/tv
 map gmm cd ~/media/music
+map gmg cd ~/media/projects
 
 map gpc cd ~/pics
 map gss cd ~/pics/screenshots
