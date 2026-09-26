@@ -1,0 +1,17 @@
+#!/bin/sh
+
+file="$HOME/.local/share/dorl"
+val=$(tr -d '\r\n' <"$file" 2>/dev/null)
+if [ "$val" = "d" ]; then
+    kill -s USR2 `pgrep foot`
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
+    darkman set light
+    gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Light"
+    echo l > $file
+elif [ "$val" = "l" ]; then
+    kill -s USR1 `pgrep foot`
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+    darkman set dark
+    gsettings set org.gnome.desktop.interface gtk-theme "Gruvbox-Dark"
+    echo d > $file
+fi

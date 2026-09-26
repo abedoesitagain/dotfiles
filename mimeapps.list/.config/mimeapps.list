@@ -112,6 +112,7 @@ audio/mp3=mpv.desktop
 audio/webm=mpv.desktop
 audio/x-flac+ogg=mpv.desktop
 x-scheme-handler/obsidian=obsidian.desktop
+image/=swiv.desktop
 
 [Added Associations]
 x-scheme-handler/http=librewolf.desktop;io.gitlab.librewolf-community.desktop;io.github.zen_browser.zen.desktop;app.zen_browser.zen.desktop;

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+flatpak run "$(ls .local/share/flatpak/app/*/current/active/export/bin/ | sed 's/.*://' | sed '/^[[:space:]]*$/d' | wmenu -i)"

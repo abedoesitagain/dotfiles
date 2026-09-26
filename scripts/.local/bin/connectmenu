@@ -1,0 +1,1 @@
+kdeconnect-cli -n "$(notify-send "fetching connected devices...";kdeconnect-cli -l --name-only|wmenu -p "Which device?")" --"$(printf "share\nsend-clipboard\nshare-text"|wmenu -p "What to do?")" "$(wl-paste)"

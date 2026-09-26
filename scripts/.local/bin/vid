@@ -1,0 +1,32 @@
+#!/bin/bash
+
+get_mpv_title() {
+    echo '{"command": ["get_property", "media-title"]}' | socat - /tmp/mpv-vid-socket | grep -o '"data":"[^"]*"' | cut -d'"' -f4
+}
+
+get_mpv_artist() {
+    echo '{"command": ["get_property", "metadata/artist"]}' | socat - /tmp/mpv-vid-socket | grep -o '"data":"[^"]*"' | cut -d'"' -f4
+}
+
+get_mpv_artist
+
+in="$(printf "Play\nPause\nPlay Next\nPlaylist\nLoop\nChapters\nTracks\nNext\nPrev\nStop\nExit" | wmenu -i -p "Currently Playing: $(get_mpv_title) - $(get_mpv_artist)")"
+if [ "$in" = "Play" ]; then
+    echo '{"command": ["set", "pause", "no"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Pause" ]; then
+    echo '{"command": ["set", "pause", "yes"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Play Next" ]; then
+    printf "{"command": ["loadfile", `wl-paste`, "append-play"]}" | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Chapters" ]; then
+    echo '{"command": ["script-binding", "mdmenu/chapters"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Playlist" ]; then
+    echo '{"command": ["script-binding", "mdmenu/playlist"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Loop" ]; then
+    echo '{"command": ["cycle-values", "loop-file", ""inf" "no""]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Tracks" ]; then
+    echo '{"command": ["script-binding", "mdmenu/tracklist"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Next" ]; then
+    echo '{"command": ["playlist-next"]}' | socat - /tmp/mpv-vid-socket
+elif [ "$in" = "Prev" ]; then
+    echo '{"command": ["playlist-prev"]}' | socat - /tmp/mpv-vid-socket
+fi

@@ -1,0 +1,12 @@
+#!/bin/sh
+if test -z "$XDG_RUNTIME_DIR"; then
+	export XDG_RUNTIME_DIR=$(mktemp -d /tmp/$(id -u)-runtime-dir.XXX)
+fi
+#exec /usr/libexec/xdg-desktop-portal-gtk -r
+#exec /usr/libexec/xdg-desktop-portal-wlr -r
+#exec /usr/libexec/flatpak-portal -r
+#exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
+killall transmission-daemon; transmission-daemon
+dbus-launch --exit-with-session /home/abe/.local/bin/./status.sh | dwl
+#/home/abe/.local/bin/./status.sh | dbus-launch dwl
+#dwl -s somebar

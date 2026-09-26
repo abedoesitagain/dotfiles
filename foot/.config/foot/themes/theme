@@ -2,6 +2,7 @@
 # Alacritty
 
 [colors-dark]
+alpha=0.8
 cursor = 181818 eeeeee
 background= 181818
 foreground= eeeeee
@@ -57,6 +58,7 @@ bright6=    93d3c3
 bright7=    f8f8f8
 
 [colors-light]
+alpha=0.8
 background=fbf1c7
 foreground=3c3836
 regular0=fbf1c7

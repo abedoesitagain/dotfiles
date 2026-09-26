@@ -1,0 +1,16 @@
+#!/bin/sh
+#while true;
+#do
+#echo "$(curl -s 'https://api.open-meteo.com/v1/forecast?latitude=33.92&longitude=8.12&hourly=temperature_2m&timezone=auto&forecast_days=1' | jq '.hourly.temperature_2m['$(date +%H)']'| awk '{printf("%d\n",$1 + 0.5)}')"°C > $HOME/.local/share/wtr
+#H=$(date +%H)
+#echo $(curl -s 'https://api.open-meteo.com/v1/forecast?latitude=33.92&longitude=8.12&hourly=temperature_2m,precipitation,cloud_cover&timezone=auto&forecast_days=1' | jq -r '\(.hourly.temperature_2m['$(date +%H)']) \(.hourly.precipitation['$(date +%H)']) \(.hourly.cloud_cover['$(date +%H)'])')°C > $HOME/.local/share/wtr
+hour="$(date +%H)"
+echo $(curl -s 'https://api.open-meteo.com/v1/forecast?latitude=33.92&longitude=8.12&hourly=temperature_2m,precipitation,cloud_cover&timezone=auto&forecast_days=1' | jq -r --arg h "$hour" '"\(.hourly.temperature_2m[($h|tonumber)]) \(.hourly.precipitation[($h|tonumber)]) \(.hourly.cloud_cover[($h|tonumber)])"') > /home/abe/.local/share/wtr
+echo "$(date +%T)" >> /home/abe/.local/share/wtr
+#echo "$(date)" >> $HOME/.local/share/wtr
+#notify-send "weather data updated."
+#if [ "$(cat "$HOME/.local/share/wtr")" == "°C"]
+#    echo 'n/a°C'> "$HOME/.local/share/wtr"
+#fi
+#sleep 10m
+#done

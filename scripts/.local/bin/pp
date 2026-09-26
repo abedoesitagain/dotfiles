@@ -1,0 +1,10 @@
+#!/bin/sh
+
+profile="$(printf "power-saver\nbalanced\nperformance"|wmenu -p "power profile:")"
+if [ $profile == "power-saver" ];
+then
+    powerprofilesctl set "$profile"
+    brightnessctl set 50%
+    else
+        powerprofilesctl set "$profile"
+fi

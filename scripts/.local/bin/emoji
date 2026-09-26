@@ -1,0 +1,1 @@
+cat $HOME/.local/share/emoji | wmenu -i | awk '{ print $1 }' | wl-copy

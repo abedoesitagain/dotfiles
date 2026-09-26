@@ -1,0 +1,2 @@
+#!/bin/env bash
+foot -e mpv --no-resume-playback `grep "$(cat $HOME/media/radio | sed 's/|.*//' | wmenu)" $HOME/media/radio | sed 's/.*|//'`

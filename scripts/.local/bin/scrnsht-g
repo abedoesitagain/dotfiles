@@ -1,0 +1,5 @@
+#!/bin/sh
+
+filename="$(date +%G%m%d_%Hh%Mm%Ss_grim-g.jpg)"
+grim -t jpeg -g "$(slurp)" $HOME/pics/screenshots/"$(date +%G%m%d_%Hh%Mm%Ss_grim.jpg)" && notify-send "Screenshot taken and copied to clipboard" -A "soap $HOME/pics/screenshots/$filename"
+wl-copy < $HOME/pics/screenshots/$filename

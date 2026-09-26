@@ -1,0 +1,2 @@
+#!/bin/env bash
+`grep "$(cat $HOME/dl/games/games | sed 's/|.*//' | wmenu -p 'What do you want to play?' -i)" $HOME/dl/games/games | sed 's/.*|//'`

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wfname="$(nmcli connection show --active | awk 'NR==2 {print $1}')"
+nmcli connection down "$wfname"
+nmcli connection up "$wfname"
+wtr

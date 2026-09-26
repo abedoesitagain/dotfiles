@@ -1,7 +1,7 @@
 -- lsp configuration
 
-vim.lsp.config('pylsp', {
-  cmd = {'pylsp'},
+vim.lsp.config('pyright', {
+  cmd = {'pyright-langserver', '--stdio'},
   filetypes = {'python'},
 })
 vim.lsp.config('lua-ls', {
@@ -19,7 +19,7 @@ vim.lsp.config('bashlsp', {
 })
 vim.lsp.config('clangd', {
    cmd = {'clangd'},
-   filetypes = {'c', 'cpp'},
+   filetypes = { "c", "c.doxygen", "cpp", "cpp.doxygen", "objc", "objcpp", "cuda" },
 })
 vim.lsp.config('zig', {
     cmd = {'zls'},
@@ -41,4 +41,12 @@ vim.lsp.config('typ', {
 vim.lsp.config('asm', {
    cmd = {'asm-lsp'},
    filetypes = {'asm'},
+})
+vim.lsp.config('js', {
+   cmd = {'typescript-language-server', '--stdio'},
+   filetypes = {'typescript', 'javascript', 'html'},
+})
+vim.lsp.config('nim', {
+   cmd = {'nimlangserver'},
+   filetypes = {'nim'},
 })

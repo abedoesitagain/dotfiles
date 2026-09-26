@@ -1,0 +1,8 @@
+#!/bin/bash
+
+query="$(printf ""|wmenu -p 'What to watch?'|sed 's/ /\%20/g')"
+curl "https://knaben.org/search/$query/0/1/seeders" -o /tmp/knaben-results.html
+id=$(cat /tmp/knaben-results.html | grep -oP '<a[^>]*href="magnet:[^"]*"[^>]*>.*?</a>' | sed -E 's/.*href="(magnet:[^"]*)".*>(.*)<\/a>/\1\t\2/'   | sed -E 's/<[^>]*>//g' | cut -f2- | nl -w1 -s$'\t' -ba | wmenu -l 30 | awk '{print $1}')
+magnet=$(cat /tmp/knaben-results.html | grep -oP '<a[^>]*href="magnet:[^"]*"[^>]*>.*?</a>' | sed -E 's/.*href="(magnet:[^"]*)".*>(.*)<\/a>/\1\t\2/'   | sed -E 's/<[^>]*>//g' | cut -f1- | nl -w1 -s$'\t' -ba | grep -P "^${id}\t" | awk '{print $2}')
+rm /tmp/knaben-results.html
+peerflix -l -k "$magnet"

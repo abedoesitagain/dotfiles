@@ -48,7 +48,7 @@ export OPENER="xdg-open"
 # Themes
 # export GTK_THEME=""           # Handled by darkman
 # export GTK3_THEME=""
-export QT_QPA_PLATFORMTHEME="qt6ct"
+export QT_QPA_PLATFORMTHEME="gtk3"
 
 # PATH variable
 export PATH="$HOME/.local/bin:$HOME/.local/share/python-venv/bin:/$HOME/.local/share/cargo/bin:$HOME/.local/share/go/bin:$HOME/.local/share/pnpm:/usr/local/texlive/2026/bin/x86_64-linux:$PNPM_HOME:$PATH"
@@ -57,6 +57,7 @@ export PATH="$HOME/.local/bin:$HOME/.local/share/python-venv/bin:/$HOME/.local/s
 
 # autostart at tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    DISPLAY=':0'
     startw
     exit
 fi

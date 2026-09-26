@@ -16,16 +16,17 @@ cmd openand ${{ case $(file --mime-type "$f" -bL) in
     esac }}
 
 
-cmd mkdir %set -f; printf "Directory Name: "; read ans; mkdir $ans
-cmd touch %set -f; printf "New File Name: " ; read ans; touch $ans
+cmd mkdir %set -f; printf "Directory Name: "; read ans; mkdir "$ans"
+cmd touch %set -f; printf "New File Name: " ; read ans; touch "$ans"
 cmd trash %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 trash --
 cmd drag  %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 dragon --
-cmd media %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 mpv -- 
+cmd media ${{printf '%s' "$fx" | tr '\n' '\0' | xargs -0 mpv -- }}
 cmd trash-restore ${{ trash-restore }}
 cmd newfilemd %read -p "file name: " totouch; touch "$totouch.md"
 cmd newfile %read -p "file name: " totouch; touch "$totouch"
 cmd newfiledate %touch "`date +%F`.md"
 cmd fzf ${{open $(fzf)}}
+cmd vimv ${{vimv}}
 
 map . set hidden!
 map d
@@ -72,6 +73,7 @@ map g.h cd ~/.cache
 map bf touch
 map bd mkdir
 map O openand
+map E vimv
 
 map F ${{
     clear

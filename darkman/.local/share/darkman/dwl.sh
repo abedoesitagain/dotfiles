@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case "$1" in
+    dark)  echo '0xffffffff 0x181818ff 0x444444ff 0x181818ff 0x90a959ff 0x90a959ff 0 0 0x770000ff' > ~/.cache/dwl-colors;;
+    light) echo '0x181818ff 0xfbf1c7ff 0x444444ff 0x181818ff 0x90a959ff 0x90a959ff 0 0 0x770000ff' > ~/.cache/dwl-colors;;
+esac
