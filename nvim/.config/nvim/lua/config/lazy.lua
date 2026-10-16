@@ -25,12 +25,30 @@ require("lazy").setup({
     lazy = false
 },
 {
-  "gagapony/highlight.nvim",
-  event = "VeryLazy",  -- Load when needed
-  opts = {
-    -- Configuration here (optional)
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    },
+    lazy = false, -- neo-tree will lazily load itself
   }
 },
+{
+    'mattn/calendar-vim',
+    lazy = false
+},
+{
+	"gagapony/highlight.nvim",
+	event = "VeryLazy",  -- Load when needed
+	opts = { }
+},
+-- {
+--     'nvim-tree/nvim-tree.lua',
+--     lazy = false,
+-- },
 {
     "mattn/emmet-vim",
     lazy = false,
@@ -53,6 +71,7 @@ require("lazy").setup({
 },
 {
     'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
     opts = {},
 },
 {
@@ -74,21 +93,20 @@ require("lazy").setup({
     lazy = true,
 },
 {
-  'saghen/blink.cmp',
-  -- dependencies = { 'rafamadriz/friendly-snippets' },
-  dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
-  version = '1.*',
-  opts = {
-    -- keymap = { preset = 'default' },
-    snippets = { preset = 'luasnip' },
-    keymap = { preset = 'super-tab' },
-    appearance = { nerd_font_variant = 'mono' },
-    completion = { documentation = { auto_show = false } },
-    -- sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
-    sources = { default = { 'lsp', 'path', 'snippets' }, },
-    fuzzy = { implementation = "prefer_rust_with_warning" }
-  },
-  opts_extend = { "sources.default" }
+	'saghen/blink.cmp',
+	dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+	version = '1.*',
+	opts = {
+		-- keymap = { preset = 'default' },
+		snippets = { preset = 'luasnip' },
+		keymap = { preset = 'super-tab' },
+		appearance = { nerd_font_variant = 'mono' },
+		completion = { documentation = { auto_show = false } },
+		-- sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
+		sources = { default = { 'lsp', 'path', 'snippets', 'buffer' }, },
+		fuzzy = { implementation = "prefer_rust_with_warning" }
+	},
+	opts_extend = { "sources.default" }
 },
 {
   'Wansmer/symbol-usage.nvim',
@@ -109,6 +127,11 @@ require("lazy").setup({
     priority = 1000,
 },
 {
+	"pietropatelli/vim-tex-conceal",
+	ft = 'latex',
+	priority = 1000,
+},
+{
     "lervag/vimtex",
     ft = 'latex',
     version = '*',
@@ -120,22 +143,8 @@ require("lazy").setup({
     lazy = false,
 },
 {
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons", -- optional, but recommended
-    },
-    lazy = false, -- neo-tree will lazily load itself
-  }
-},
-{
   "j-hui/fidget.nvim",
-  opts = {
-    -- options
-  },
+  opts = { },
 },
 {
   "christoomey/vim-tmux-navigator",
@@ -156,10 +165,10 @@ require("lazy").setup({
   },
 },
 {
-    "NeogitOrg/neogit",
-    lazy = false,
-    priority = 1000,
-    opts = {},
+	"NeogitOrg/neogit",
+	lazy = false,
+	priority = 1000,
+	opts = {},
 },
 {
 	"L3MON4D3/LuaSnip",

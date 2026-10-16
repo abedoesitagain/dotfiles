@@ -23,7 +23,7 @@ export XDG_DOWNLOAD_DIR="$HOME/dl"
 export XDG_MUSIC_DIR="$HOME/media/music"
 export XDG_PICTURES_DIR="$HOME/pics"
 export XDG_VIDEOS_DIR="$HOME/media"
-export XDG_PROJECTS_DIR="$HOME/docs/prj"
+export XDG_PROJECTS_DIR="$HOME/docs/projects"
 
 # misc dirs
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -39,6 +39,9 @@ export GOPATH="$XDG_DATA_HOME/go"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+#export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+export CODEX_HOME="$XDG_DATA_HOME/codex"
 
 # Program params
 export EDITOR="nvim"

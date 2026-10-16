@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# PATH="/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/home/abe/.local/bin/"
+
+colors="$HOME/.cache/dwl-colors"
+
+read -r norm_fg norm_bg _ sel_fg sel_bg _ _ _ _ < "$colors"
+
+norm_fg=${norm_fg#0x}
+norm_bg=${norm_bg#0x}
+sel_fg=${sel_fg#0x}
+sel_bg=${sel_bg#0x}
+
+exec wmenu- \
+    -N "$norm_bg" \
+    -n "$norm_fg" \
+    -M "$sel_bg" \
+    -m "$sel_fg" \
+    -S "$sel_bg" \
+    -s "$sel_fg" \
+    "$@"

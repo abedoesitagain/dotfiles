@@ -7,6 +7,6 @@ fi
 #exec /usr/libexec/flatpak-portal -r
 #exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 killall transmission-daemon; transmission-daemon
-dbus-launch --exit-with-session /home/abe/.local/bin/./status.sh | dwl
+dbus-launch /home/abe/.local/bin/./status.sh | dwl
 #/home/abe/.local/bin/./status.sh | dbus-launch dwl
 #dwl -s somebar

@@ -1,8 +1,8 @@
 #!/bin/sh
 
-opt="$(printf "video\nsearch yt video\nmusic\ntorrent dowload\ndownload video\ndownload with curl\ngit clone" | dmenu -p "from clipboard:")"
+opt="$(printf "video\nsearch yt video\nmusic\ntorrent dowload\ndownload video\ndownload with curl\ngit clone" | wmenu -p "from clipboard:")"
 case $opt in
-    "video") footclient -e tmux new-session mpv --input-ipc-server=/tmp/mpv-vid-socket "$(wl-paste)" & notify-send "opening $(wl-paste) with mpv";;
+    "video") footclient -e mpv --input-ipc-server=/tmp/mpv-vid-socket "$(wl-paste)" & notify-send "opening $(wl-paste) with mpv";;
     "search yt video") query="$(wmenu -p "search:" < /dev/null)"; footclient -e mpv ytdl://ytsearch:"$query" & notify-send "looking up $query";;
     "music") mpv --no-video --input-ipc-server=/tmp/mpv-socket "$(wl-paste)";;
     "torrent download") transmission-remote -a "$(wl-paste)";;#footclient -e peerflix -kl "$(wl-paste)" & notify-send "opening torrent with mpv";;

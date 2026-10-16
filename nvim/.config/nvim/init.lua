@@ -27,12 +27,18 @@ vim.cmd.set("mouse=")
 
 vim.cmd.nmap("<C-F>     :Lf<CR>")
 vim.cmd.nmap("<C-B>     :buffers<CR>")
-vim.cmd.nmap("<F2>      :Neotree<CR>")
+vim.cmd.nmap("<F2>      :Neotree toggle<CR>")
+vim.cmd.nmap("<F3>      :CalendarVR<CR>")
 vim.cmd.nmap("<C-Q>     :q<CR>")
-vim.cmd.nmap("<F3>      :split<CR>")
-vim.cmd.nmap("<F5>      :split term://zsh<CR>")
+vim.cmd.nmap("<F5>      :ToggleTerm<CR>")
 vim.cmd.tnoremap("<C-E> <C-\\><C-n>")
 -- vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+require("toggleterm").setup({
+    size = 10,
+    direction = "horizontal",
+})
+
 
 -- lsp configuration
 vim.lsp.enable('pyright')
@@ -46,8 +52,40 @@ vim.lsp.enable('odin')
 vim.lsp.enable('typ')
 vim.lsp.enable('asm')
 vim.lsp.enable('js')
+vim.lsp.enable('html')
 vim.lsp.enable('nim')
+vim.lsp.enable('kotlin')
+vim.lsp.enable('java')
 
+-- nvim-tree
+-- disable netrw at the very start of your init.lua
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+-- require("nvim-tree").setup()
+-- 
+-- -- OR setup with a config
+-- 
+-- ---@type nvim_tree.config
+-- local config = {
+-- sort = {
+--   sorter = "case_sensitive",
+-- },
+-- view = {
+--   width = 30,
+-- },
+-- renderer = {
+--   group_empty = true,
+-- },
+-- filters = {
+--   dotfiles = true,
+-- },
+-- }
+-- require("nvim-tree").setup(config)
 -- Luasnip
 require("luasnip.loaders.from_snipmate").lazy_load()
 
@@ -132,9 +170,36 @@ require('nvim-treesitter').setup {
   -- Directory to install parsers and queries to (prepended to `runtimepath` to have priority)
   install_dir = vim.fn.stdpath('data') .. '/site'
 }
-require('nvim-treesitter').install { 'rust', 'javascript', 'zig', 'nim' }
+-- require('nvim-treesitter').install { 'rust', 'javascript', 'zig', 'nim' }
 -- Make vimwiki and render-markdown play nice
 require('render-markdown').setup({ file_types = { 'markdown', 'vimwiki' }, })
+require("render-markdown").setup({ 
+    latex = {
+        -- Turn on / off latex rendering.
+        enabled = true,
+        -- Additional modes to render latex.
+        render_modes = false,
+        -- Executable used to convert latex formula to rendered unicode.
+        -- If a list is provided the commands run in order until the first success.
+        converter = { 'utftex', 'latex2text' },
+        -- Render inline latex formulas.
+        inline = true,
+        -- Render block latex formulas.
+        block = true,
+        -- Highlight for latex blocks.
+        highlight = 'RenderMarkdownMath',
+        -- Determines where latex formula is rendered relative to block.
+        -- | above  | above latex block                               |
+        -- | below  | below latex block                               |
+        -- | center | centered with latex block (must be single line) |
+        position = 'center',
+        -- Number of empty lines above latex blocks.
+        top_pad = 0,
+        -- Number of empty lines below latex blocks.
+        bottom_pad = 0,
+    },
+})
+
 vim.treesitter.language.register('markdown', 'vimwiki')
 
 -- make main areas transparent

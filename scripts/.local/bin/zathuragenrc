@@ -2,7 +2,12 @@
 
 # Generates zathura configuration file
 
-. $HOME/.cache/colors.sh
+case "$(darkman get)" in
+    light) export foreground="#000000"; export background="#FBF1C7";;
+    dark) export foreground="#ffffff"; export background="#1D2021";;
+esac
+#background="#FBF1C7"
+#background="#ffffff"
 
 cat <<CONF
 set recolor "true"

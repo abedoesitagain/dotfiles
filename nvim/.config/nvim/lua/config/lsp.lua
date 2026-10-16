@@ -27,6 +27,7 @@ vim.lsp.config('zig', {
     version = {'0.15'},
 })
 vim.lsp.config('rust', {
+   -- cmd = {'bacon-ls'},
    cmd = {'rust-analyzer'},
    filetypes = {'rust'},
 })
@@ -44,9 +45,22 @@ vim.lsp.config('asm', {
 })
 vim.lsp.config('js', {
    cmd = {'typescript-language-server', '--stdio'},
-   filetypes = {'typescript', 'javascript', 'html'},
+   filetypes = {'typescript', 'javascript'}, -- , 'html'
+})
+vim.lsp.config('html', {
+   cmd = {'vscode-html-language-server', '--stdio'},
+   filetypes = {'html'},
 })
 vim.lsp.config('nim', {
-   cmd = {'nimlangserver'},
+   cmd = {'nimlangserver', '--stdio'},
    filetypes = {'nim'},
 })
+vim.lsp.config('kotlin', {
+   cmd = {'intellij-server', '--stdio'},
+   filetypes = {'kotlin'},
+})
+vim.lsp.config('java', {
+   cmd = {'jdtls'},
+   filetypes = {'java'},
+})
+

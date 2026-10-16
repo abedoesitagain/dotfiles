@@ -4,6 +4,7 @@ set icons false
 cmd open ${{ case $(file --mime-type "$f" -bL) in
         text/*|application/json|inode/x-empty) $EDITOR "$f";;
         application/x-executable) "$f";;
+        application/x-pie-executable) "$f";;
         *) soap "$f" ;;
         *) xdg-open "$f" ;;
     esac }}
@@ -12,14 +13,14 @@ cmd openand ${{ case $(file --mime-type "$f" -bL) in
         text/*|application/json|inode/x-empty) $EDITOR "$f" &;;
         application/x-executable) "$f" &;;
         *) soap "$f" &;;
-        #*) xdg-open "$f" &;;
+        *) xdg-open "$f" &;;
     esac }}
 
 
 cmd mkdir %set -f; printf "Directory Name: "; read ans; mkdir "$ans"
 cmd touch %set -f; printf "New File Name: " ; read ans; touch "$ans"
 cmd trash %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 trash --
-cmd drag  %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 dragon --
+cmd drag  %printf '%s' "$fx" | tr '\n' '\0' | xargs -0 dragon-drop --
 cmd media ${{printf '%s' "$fx" | tr '\n' '\0' | xargs -0 mpv -- }}
 cmd trash-restore ${{ trash-restore }}
 cmd newfilemd %read -p "file name: " totouch; touch "$totouch.md"
