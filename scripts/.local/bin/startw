@@ -6,7 +6,8 @@ fi
 #exec /usr/libexec/xdg-desktop-portal-wlr -r
 #exec /usr/libexec/flatpak-portal -r
 #exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
-killall transmission-daemon; transmission-daemon
+killall qbittorrent-nox; qbittorrent-nox&
+python ~/.local/share/hp.py&
 dbus-launch /home/abe/.local/bin/./status.sh | dwl
 #/home/abe/.local/bin/./status.sh | dbus-launch dwl
 #dwl -s somebar

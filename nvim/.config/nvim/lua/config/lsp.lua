@@ -64,3 +64,20 @@ vim.lsp.config('java', {
    filetypes = {'java'},
 })
 
+-- lsp configuration
+vim.lsp.enable('pyright')
+vim.lsp.enable('bashlsp')
+vim.lsp.enable('lua-ls')
+vim.lsp.enable('clangd')
+vim.lsp.enable('ltex-ls')
+vim.lsp.enable('zig')
+vim.lsp.enable('rust')
+vim.lsp.enable('odin')
+vim.lsp.enable('typ')
+vim.lsp.enable('asm')
+vim.lsp.enable('js')
+vim.lsp.enable('html')
+vim.lsp.enable('nim')
+vim.lsp.enable('kotlin')
+vim.lsp.enable('java')
+

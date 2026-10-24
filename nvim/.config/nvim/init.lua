@@ -31,6 +31,7 @@ vim.cmd.nmap("<F2>      :Neotree toggle<CR>")
 vim.cmd.nmap("<F3>      :CalendarVR<CR>")
 vim.cmd.nmap("<C-Q>     :q<CR>")
 vim.cmd.nmap("<F5>      :ToggleTerm<CR>")
+vim.cmd.nmap("<F6>      :split term://opencode<CR>")
 vim.cmd.tnoremap("<C-E> <C-\\><C-n>")
 -- vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
 
@@ -39,23 +40,6 @@ require("toggleterm").setup({
     direction = "horizontal",
 })
 
-
--- lsp configuration
-vim.lsp.enable('pyright')
-vim.lsp.enable('bashlsp')
-vim.lsp.enable('lua-ls')
-vim.lsp.enable('clangd')
-vim.lsp.enable('ltex-ls')
-vim.lsp.enable('zig')
-vim.lsp.enable('rust')
-vim.lsp.enable('odin')
-vim.lsp.enable('typ')
-vim.lsp.enable('asm')
-vim.lsp.enable('js')
-vim.lsp.enable('html')
-vim.lsp.enable('nim')
-vim.lsp.enable('kotlin')
-vim.lsp.enable('java')
 
 -- nvim-tree
 -- disable netrw at the very start of your init.lua

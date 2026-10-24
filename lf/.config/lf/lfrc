@@ -28,6 +28,7 @@ cmd newfile %read -p "file name: " totouch; touch "$totouch"
 cmd newfiledate %touch "`date +%F`.md"
 cmd fzf ${{open $(fzf)}}
 cmd vimv ${{vimv}}
+cmd bg ${{awww img "$f"}}
 
 map . set hidden!
 map d
@@ -75,6 +76,7 @@ map bf touch
 map bd mkdir
 map O openand
 map E vimv
+map bb bg
 
 map F ${{
     clear
